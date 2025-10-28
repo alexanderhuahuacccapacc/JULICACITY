@@ -9,7 +9,7 @@ spring:
         git:
           uri: https://github.com/alexanderhuahuacccapacc/JULICACITY.git # ruta del repositorio git
           searchPaths: config-data
-          default-label: jorge-prueba
+          default-label: rendre-prueba
   security:
     user:
       name: root
