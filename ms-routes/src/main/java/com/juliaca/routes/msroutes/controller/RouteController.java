@@ -1,6 +1,8 @@
 package com.juliaca.routes.msroutes.controller;
 
+import com.juliaca.routes.msroutes.dto.RouteDTO;
 import com.juliaca.routes.msroutes.dto.RouteWKTRequest;
+import com.juliaca.routes.msroutes.model.Line;
 import com.juliaca.routes.msroutes.model.Route;
 import com.juliaca.routes.msroutes.model.Stop;
 import com.juliaca.routes.msroutes.service.LineService;
@@ -26,14 +28,20 @@ public class RouteController {
         this.stopService = stopService;
     }
 
+    @GetMapping("/lines")
+    public List<Line> getLines() {
+        return lineService.findAll();
+    }
+
     @GetMapping("/routes")
-    public List<Route> getRoutes() {
-        return routeService.findAll();
+    public List<RouteDTO> getRoutes() {
+        return routeService.findAllDTO();
     }
 
     @GetMapping("/routes/{id}")
-    public Route getRoute(@PathVariable Long id) {
-        return routeService.findById(id);
+    public RouteDTO getRoute(@PathVariable Long id) {
+        Route route = routeService.findById(id);
+        return route != null ? routeService.toDTO(route) : null;
     }
 
     @GetMapping("/routes/{id}/stops")
