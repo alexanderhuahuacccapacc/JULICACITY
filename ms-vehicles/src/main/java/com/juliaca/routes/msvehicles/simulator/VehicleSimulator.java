@@ -53,15 +53,19 @@ public class VehicleSimulator {
 
             if (Math.random() < 0.05) {
                 try {
-                    alertClient.createAlert(new AlertRequest(
-                            v.getPlate(),
-                            "NO_SIGNAL",
-                            "El vehículo " + v.getPlate() + " ha perdido señal temporalmente",
-                            "WARN"
-                    ));
+                    AlertRequest alert = AlertRequest.builder()
+                            .vehicleId(v.getPlate())
+                            .type("NO_SIGNAL")
+                            .message("El vehículo " + v.getPlate() + " ha perdido señal temporalmente")
+                            .severity("WARN")
+                            .active(true)
+                            .build();
+
+                    alertClient.createAlert(alert);
                     log.info("Enviada alerta NO_SIGNAL para vehículo {}", v.getPlate());
                 } catch (Exception e) {
-                    log.error("Error al enviar alerta a ms-alerts: {}", e.getMessage());
+                    log.error("Error al enviar alerta a ms-alerts para vehículo {}: {}",
+                            v.getPlate(), e.getMessage(), e);
                 }
             }
         }
