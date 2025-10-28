@@ -10,7 +10,9 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.concurrent.CopyOnWriteArrayList;
 @Component
 public class LocationHandler extends TextWebSocketHandler {
@@ -32,7 +34,11 @@ public class LocationHandler extends TextWebSocketHandler {
 
         // Parsear JSON recibido
         Location location = mapper.readValue(message.getPayload(), Location.class);
-        location.setTimestamp(LocalDateTime.now());
+        location.setTimestamp(System.currentTimeMillis());
+        LocalDateTime time = Instant.ofEpochMilli(location.getTimestamp())
+                .atZone(ZoneId.systemDefault())
+                .toLocalDateTime();
+
 
         // Guardar en base de datos
         repository.save(location);
