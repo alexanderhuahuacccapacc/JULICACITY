@@ -24,8 +24,7 @@ springdoc:
 
 alerts:
   simulator:
-    enabled: true
-    interval-seconds: 10
+    enabled: false
 
   nosignal:
     threshold-millis: 30000
