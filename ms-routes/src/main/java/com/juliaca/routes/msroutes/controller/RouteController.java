@@ -1,11 +1,13 @@
 package com.juliaca.routes.msroutes.controller;
 
+import com.juliaca.routes.msroutes.dto.RouteWKTRequest;
 import com.juliaca.routes.msroutes.model.Line;
 import com.juliaca.routes.msroutes.model.Route;
 import com.juliaca.routes.msroutes.model.Stop;
 import com.juliaca.routes.msroutes.service.LineService;
 import com.juliaca.routes.msroutes.service.RouteService;
 import com.juliaca.routes.msroutes.service.StopService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -48,5 +50,11 @@ public class RouteController {
     @PostMapping("/routes")
     public Route saveRoute(@RequestBody Route route) {
         return routeService.save(route);
+    }
+
+    @PostMapping("/routes/wkt")
+    public ResponseEntity<Route> saveRouteFromWKT(@RequestBody RouteWKTRequest request) throws Exception {
+        Route saved = routeService.createRouteFromWKT(request.getName(), request.getLineId(), request.getPath());
+        return ResponseEntity.ok(saved);
     }
 }
