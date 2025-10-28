@@ -1,0 +1,29 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: ms-alerts
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/alertsdb
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /doc/swagger-ui.html
+
+alerts:
+  simulator:
+    enabled: true
+    interval-seconds: 10
+
