@@ -27,3 +27,11 @@ alerts:
     enabled: true
     interval-seconds: 10
 
+  nosignal:
+    threshold-millis: 30000
+
+vehicles:
+  websocket:
+    url: ws://localhost:8082/ws
+    topic: /topic/vehicles
+
