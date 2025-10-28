@@ -28,11 +28,6 @@ public class RouteController {
         this.stopService = stopService;
     }
 
-    @GetMapping("/lines")
-    public List<Line> getLines() {
-        return lineService.findAll();
-    }
-
     @GetMapping("/routes")
     public List<RouteDTO> getRoutes() {
         return routeService.findAllDTO();
