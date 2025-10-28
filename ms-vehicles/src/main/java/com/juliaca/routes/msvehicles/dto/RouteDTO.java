@@ -8,5 +8,6 @@ import java.util.List;
 public class RouteDTO {
     private String id;
     private String name;
+    private String wktPath;
     private List<LocationDTO> path;
 }
