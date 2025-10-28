@@ -9,17 +9,21 @@ import java.util.List;
 @Service
 public class StopService {
 
-    private final StopRepository repository;
+    private final StopRepository stopRepository;
 
-    public StopService(StopRepository repository) {
-        this.repository = repository;
+    public StopService(StopRepository stopRepository) {
+        this.stopRepository = stopRepository;
     }
 
-    public List<Stop> findByRoute(Long routeId) {
-        return repository.findByRouteId(routeId);
+    public List<Stop> findAll() {
+        return stopRepository.findAll();
     }
 
     public Stop save(Stop stop) {
-        return repository.save(stop);
+        return stopRepository.save(stop);
+    }
+
+    public List<Stop> findByRoute(Long routeId) {
+        return stopRepository.findByRouteId(routeId);
     }
 }
