@@ -1,8 +1,16 @@
-FROM eclipse-temurin:17-jdk-alpine
+# Usa Java 17
+FROM openjdk:17-jdk-slim
 
-COPY produccion/*.jar app.jar
+# Directorio de trabajo en el contenedor
+WORKDIR /app
 
+# Copia el JAR generado al contenedor
+COPY target/ms-transport-tracking-0.0.1-SNAPSHOT.jar app.jar
 
+# Expone el puerto que asignará Render
+ENV PORT 8080
 EXPOSE 8080
 
+# Comando para arrancar la app
 ENTRYPOINT ["java", "-jar", "app.jar"]
+", "-jar", "app.jar"]
