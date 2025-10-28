@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import PassengerHome from "./pages/PassengerHome";
+import DriverLogin from "./pages/DriverLogin";
+import DriverMode from "./pages/DriverMode";
+import Notifications from "./pages/Notifications";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<PassengerHome />} />
+        <Route path="/driver/login" element={<DriverLogin />} />
+        <Route path="/driver" element={<DriverMode />} />
+        <Route path="/notifications" element={<Notifications />} />
+      </Routes>
+    </Router>
   );
 }
-
-export default App;
