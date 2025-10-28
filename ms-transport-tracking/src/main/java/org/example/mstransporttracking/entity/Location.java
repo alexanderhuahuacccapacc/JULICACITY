@@ -15,7 +15,6 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonProperty("id")
     private String vehicleId;
 
     @JsonProperty("lat")
