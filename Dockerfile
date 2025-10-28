@@ -5,7 +5,6 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copia el JAR generado al contenedor
-COPY # Copia el JAR generado
 COPY ms-transport-tracking/target/ms-transport-tracking-0.0.1-SNAPSHOT.jar app.jar
 
 
