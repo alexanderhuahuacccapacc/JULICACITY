@@ -19,6 +19,7 @@ public class Vehicle {
     private String id;
 
     private String plate;
+    private String routeId;
     private String line;
     private String status;
 

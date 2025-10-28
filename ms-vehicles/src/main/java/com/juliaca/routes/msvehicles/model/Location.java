@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Location {
     private double lat;
-    private double lon;
+    private double lng;
     private long timestamp;
 }
