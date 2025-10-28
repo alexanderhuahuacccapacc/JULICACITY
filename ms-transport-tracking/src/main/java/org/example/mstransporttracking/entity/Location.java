@@ -12,7 +12,7 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    @JsonProperty("id")
     @Column(name = "vehicle_id", nullable = false)
     private String vehicleId;
 
