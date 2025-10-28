@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head><title>Conductor GPS</title></head>
+<body>
+  <h2>Enviando ubicación...</h2>
+  <script>
+    const socket = new WebSocket("ws://192.168.18.32:8080/ws/location"); // tu IP local
+
+    socket.onopen = () => console.log("Conectado al servidor");
+
+    function sendLocation(position) {
+      const { latitude, longitude } = position.coords;
+      const data = { id: "bus_22", lat: latitude, lon: longitude, timestamp: Date.now() };
+      socket.send(JSON.stringify(data));
+      console.log("Ubicación enviada:", data);
+    }
+
+    function errorHandler(err) {
+      console.error("Error al obtener ubicación:", err);
+    }
+
+    if ("geolocation" in navigator) {
+      setInterval(() => {
+        navigator.geolocation.getCurrentPosition(sendLocation, errorHandler);
+      }, 2000); // cada 5 segundos
+    } else {
+      alert("El GPS no está disponible en este dispositivo");
+    }
+  </script>
+</body>
+</html>
