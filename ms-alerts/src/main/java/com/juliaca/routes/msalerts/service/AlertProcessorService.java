@@ -73,7 +73,7 @@ public class AlertProcessorService {
                             .active(true)
                             .build();
                     alertService.save(alert);
-                    System.out.println("⚠️ Generada alerta NO_SIGNAL para: " + vehicleId);
+                    System.out.println("Generada alerta NO_SIGNAL para: " + vehicleId);
                 }
             }
         });
