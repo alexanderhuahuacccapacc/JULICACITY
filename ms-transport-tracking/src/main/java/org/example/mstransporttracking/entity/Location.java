@@ -11,10 +11,8 @@ import lombok.Data;
 public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
     private Long id;
 
-    @JsonProperty("id")
     @Column(name = "vehicle_id", nullable = false)
     private String vehicleId;
 
@@ -29,45 +27,20 @@ public class Location {
     @Column(name = "timestamp", nullable = false)
     private Long timestamp;
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public String getVehicleId() { return vehicleId; }
+    public void setVehicleId(String vehicleId) { this.vehicleId = vehicleId; }
 
-    public String getVehicleId() {
-        return vehicleId;
-    }
+    public double getLatitude() { return latitude; }
+    public void setLatitude(double latitude) { this.latitude = latitude; }
 
-    public void setVehicleId(String vehicleId) {
-        this.vehicleId = vehicleId;
-    }
+    public double getLongitude() { return longitude; }
+    public void setLongitude(double longitude) { this.longitude = longitude; }
 
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
-
-    public Long getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Long timestamp) {
-        this.timestamp = timestamp;
-    }
+    public Long getTimestamp() { return timestamp; }
+    public void setTimestamp(Long timestamp) { this.timestamp = timestamp; }
 
 
 }
